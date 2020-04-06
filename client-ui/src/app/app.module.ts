@@ -171,7 +171,6 @@ const ROOT_ROUTING = 'app/'
     PrettyJsonModule,
     TreeModule.forRoot(),
     BrowserModule,
-    TooltipModule.forRoot(),
     CytoscapeNgLibModule,
     HttpClientModule,
     NgxDatatableModule,

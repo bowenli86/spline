@@ -25,6 +25,7 @@ import {DashboardVM} from "./viewModels/dashboardVM";
 export interface AppState {
     config: {
         apiUrl: string
+        embeddedMode: boolean
     },
     executionEvents: PageableExecutionEventsResponse,
     dashboard: DashboardVM,
@@ -33,7 +34,10 @@ export interface AppState {
     attributeLineageAndImpact: AttributeLineageAndImpact,
     detailsInfos: OperationDetailsVM,
     attributes: CytoscapeGraphVM,
-    router: RouterStateUrl,
+    router: {
+        state: RouterStateUrl;
+        navigationId: number;
+    };
     layout: any,
     contextMenu: any,
     error: string
