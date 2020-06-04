@@ -66,7 +66,7 @@ export function getText(expr: IExpression, attributeList: any): string {
         }
         case ExpressionType.AttrRef: {
             const attrRef = expr as IAttrRef
-            return attributeList.find(a => a.id == attrRef.refId).name
+            return attributeList.find(a => a.id === attrRef.refId).name
         }
         case ExpressionType.GenericLeaf: {
             return renderAsGenericLeafExpr(expr as IGenericLeaf, attributeList)

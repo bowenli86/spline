@@ -55,7 +55,7 @@ export class PropertiesComponent implements OnDestroy {
   }
 
   public propertiesContain(propertyType: PropertyType): boolean {
-    return this.properties.filter(p => p.type == propertyType).length > 0
+    return this.properties.filter(p => p.type === propertyType).length > 0
   }
 
   public openExprViewDialog(event: Event, expression: Property): void {

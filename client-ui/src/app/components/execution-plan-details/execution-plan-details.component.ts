@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component } from '@angular/core';
-import { AppState } from 'src/app/model/app-state';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { ExecutedLogicalPlanVM } from 'src/app/model/viewModels/executedLogicalPlanVM';
+import { Component } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs'
+import { AppState } from 'src/app/model/app-state'
+import { ExecutedLogicalPlanVM } from 'src/app/model/viewModels/executedLogicalPlanVM'
 
 @Component({
   selector: 'execution-plan-details',
@@ -31,7 +31,7 @@ export class ExecutionPlanDetailsComponent {
     private store: Store<AppState>
   ) { }
 
-  public getExecutionPlanVM(): Observable<ExecutedLogicalPlanVM> {
+  getExecutionPlanVM(): Observable<ExecutedLogicalPlanVM> {
     return this.store.select('executedLogicalPlan')
   }
 }

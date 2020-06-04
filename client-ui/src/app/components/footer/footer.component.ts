@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 
 declare const __APP_VERSION__: string
@@ -26,8 +26,6 @@ declare const __APP_VERSION__: string
 })
 export class FooterComponent {
 
-  constructor(
-  ) { }
-
   appVersion: string = __APP_VERSION__
+
 }

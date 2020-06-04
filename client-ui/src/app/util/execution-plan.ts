@@ -49,13 +49,13 @@ export const operationColorCodes: Map<string, string> = new Map([
 
 
 export function getOperationIcon(operationType: string, operationName: string): string {
-    return operationType == OperationType.Write ?
+    return operationType === OperationType.Write ?
         String.fromCharCode(operationIconCodes.get(OperationType.Write)) :
         String.fromCharCode(operationIconCodes.get(operationName) || operationIconCodes.get(OperationType.Generic))
 }
 
 export function getOperationColor(operationType: string, operationName: string): string {
-    return operationType == OperationType.Write ?
+    return operationType === OperationType.Write ?
         operationColorCodes.get(OperationType.Write) :
         operationColorCodes.get(operationName) || operationColorCodes.get(OperationType.Generic)
 }

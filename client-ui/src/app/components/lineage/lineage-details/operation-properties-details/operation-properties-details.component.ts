@@ -93,7 +93,7 @@ export class OperationPropertiesDetailsComponent implements AfterViewInit, OnDes
           let component: Type<PropertiesComponent>
           try {
             properties = this.getProperties(store.detailsInfos, store.attributes)
-            component = type == OperationType.Write ? PropertiesComponents.get(OperationType.Write) : PropertiesComponents.get(name)
+            component = type === OperationType.Write ? PropertiesComponents.get(OperationType.Write) : PropertiesComponents.get(name)
           } catch (error) {
             console.error(error)
             component = PropertiesComponents.get(OperationType.Error)
@@ -127,7 +127,7 @@ export class OperationPropertiesDetailsComponent implements AfterViewInit, OnDes
     const opInfoProperties = operationDetails.operation.properties
     let properties = []
 
-    if (operationDetails.operation._type == OperationType.Write) {
+    if (operationDetails.operation._type === OperationType.Write) {
       properties.push(new Property(PropertyType.OutputSource, opInfoProperties.outputSource))
       properties.push(new Property(PropertyType.SourceType, opInfoProperties.destinationType))
       return properties

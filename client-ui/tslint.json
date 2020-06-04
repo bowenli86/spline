@@ -45,6 +45,8 @@
     "no-unbound-method": [
       true,
       "ignore-static"
-    ]
+    ],
+    "semicolon": false,
+    "whitespace": [true, "check-module"]
   }
 }

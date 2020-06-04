@@ -25,7 +25,7 @@ import * as LineageOverviewAction from '../../store/actions/lineage-overview.act
 @Component({
   selector: 'lineage-overview',
   templateUrl: './lineage-overview.component.html',
-  styleUrls: ['./lineage-overview.component.less']
+  styleUrls: ['./lineage-overview.component.scss']
 })
 export class LineageOverviewComponent {
 

@@ -22,7 +22,7 @@ import {LineageGraphLegend} from '../../../model/lineage-graph'
 @Component({
   selector: 'lineage-highlights-toolbar',
   templateUrl: './lineage-highlights-toolbar.component.html',
-  styleUrls: ['./lineage-highlights-toolbar.component.less'],
+  styleUrls: ['./lineage-highlights-toolbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LineageHighlightsToolbarComponent {

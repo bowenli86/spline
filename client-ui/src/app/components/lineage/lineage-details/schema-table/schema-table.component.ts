@@ -46,7 +46,7 @@ export class SchemaTableComponent implements OnChanges {
   public selectedFieldChanged = new EventEmitter<StructFieldVM>()
 
   public getArrayInnermostElementTypeWithNestingLevel = (dt: DataTypeVM, level = 1): [DataTypeVM, number] => {
-    return dt.elementDataType.dataType._type == DataTypeType.Array
+    return dt.elementDataType.dataType._type === DataTypeType.Array
       ? this.getArrayInnermostElementTypeWithNestingLevel(dt.elementDataType.dataType, level + 1)
       : [dt.elementDataType.dataType, level]
   }

@@ -53,7 +53,7 @@ function getConfiguration(): any {
             {
                 content: '<span class="fa fa-crop fa-2x"></span><b></span><b>Expand</b>',
                 select: function (ele, event) {
-                    if (ele.data()._type == LineageOverviewNodeType.Execution) {
+                    if (ele.data()._type === LineageOverviewNodeType.Execution) {
                         event.target.trigger('doubleTap', ele.data().id)
                     }
                 }

@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@toolbar-width: 250px;
+$toolbar-width: 250px;
 
-@separator-color: #eaeaea;
-@warning-color: #E39256;
+$separator-color: #eaeaea;
+$warning-color: #e39256;
 
 .graph-toolbar {
+  min-width: $toolbar-width;
   position: absolute;
-  top: 1rem;
   right: 1rem;
-  min-width: @toolbar-width;
+  top: 1rem;
 }
 
 .graph-toolbar__section {
@@ -31,11 +31,11 @@
 }
 
 .graph-toolbar-warning {
-  display: flex;
   align-items: center;
+  color: $warning-color;
+  display: flex;
   font-size: 12px;
   margin-top: 0.5rem;
-  color: @warning-color;
 
   &:first-child {
     margin-top: 0;
@@ -43,9 +43,9 @@
 
   &__icon {
     .mat-icon {
-      width: 1rem;
-      height: 1rem;
       font-size: 1rem;
+      height: 1rem;
+      width: 1rem;
     }
   }
 
@@ -56,14 +56,14 @@
 }
 
 .graph-toolbar__section-footer {
+  border-top: 1px solid $separator-color;
+  font-size: 12px;
   margin: 1rem -1rem 0;
   padding: 1rem 1rem 0;
-  font-size: 12px;
-  border-top: 1px solid @separator-color;
 
   a {
-    border-bottom: 1px dashed @warning-color;
-    color: @warning-color;
+    border-bottom: 1px dashed $warning-color;
+    color: $warning-color;
 
     &:hover {
       border-bottom-color: transparent;

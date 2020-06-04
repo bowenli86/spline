@@ -27,7 +27,7 @@ import * as RouterAction from '../../../store/actions/router.actions';
 @Component({
   selector: 'app-attribute-search-bar',
   templateUrl: './attribute-search-bar.component.html',
-  styleUrls: ['./attribute-search-bar.component.less'],
+  styleUrls: ['./attribute-search-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
