@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Component, Input} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {AppState} from 'src/app/model/app-state';
-import {Observable} from 'rxjs';
-import {OperationDetailsVM} from 'src/app/model/viewModels/operationDetailsVM';
-import {AttributeVM} from 'src/app/model/viewModels/attributeVM';
+import { Component, Input } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs'
+import { AppState } from 'src/app/model/app-state'
+import { AttributeVM } from 'src/app/model/viewModels/attributeVM'
+import { OperationDetailsVM } from 'src/app/model/viewModels/operationDetailsVM'
+
 
 @Component({
   selector: 'lineage-overview-details',
@@ -34,7 +35,7 @@ export class LineageOverviewDetailsComponent {
   }
 
   public getLineageOverviewInfo = (): Observable<{ [key: string]: {} }> => {
-    return this.store.select('lineageOverview', "lineageInfo")
+    return this.store.select('lineageOverview', 'lineageInfo')
   }
 
   public getDetailsInfo = (): Observable<OperationDetailsVM> => {
@@ -46,6 +47,6 @@ export class LineageOverviewDetailsComponent {
   }
 
   public getTargetName = (): Observable<any> => {
-    return this.store.select("lineageOverview", "lineageInfo", "targetNodeName")
+    return this.store.select('lineageOverview', 'lineageInfo', 'targetNodeName')
   }
 }

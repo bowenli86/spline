@@ -162,7 +162,7 @@ module.exports = {
         '@angular-eslint/no-output-rename': 'error',
         '@angular-eslint/no-outputs-metadata-property': 'error',
         '@angular-eslint/use-lifecycle-interface': 'warn',
-        '@angular-eslint/use-pipe-transform-interface': 'error'
+        '@angular-eslint/use-pipe-transform-interface': 'error',
       }
     },
     {

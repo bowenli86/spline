@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Action} from '@ngrx/store';
-import {OperationDetailsVM} from '../../model/viewModels/operationDetailsVM';
+import { Action } from '@ngrx/store'
+
+import { OperationDetailsVM } from '../../model/viewModels/operationDetailsVM'
 
 export enum DetailsInfoActionTypes {
     DETAILS_INFOS_GET = '[Details Info] Get',
@@ -23,17 +24,17 @@ export enum DetailsInfoActionTypes {
 }
 
 export class Get implements Action {
-    public readonly type = DetailsInfoActionTypes.DETAILS_INFOS_GET
+    readonly type = DetailsInfoActionTypes.DETAILS_INFOS_GET
     constructor(public payload: string) { }
 }
 
 export class GetSuccess implements Action {
-    public readonly type = DetailsInfoActionTypes.DETAILS_INFOS_GET_SUCCESS
+    readonly type = DetailsInfoActionTypes.DETAILS_INFOS_GET_SUCCESS
     constructor(public payload: OperationDetailsVM) { }
 }
 
 export class Reset implements Action {
-    public readonly type = DetailsInfoActionTypes.DETAILS_INFOS_RESET
+    readonly type = DetailsInfoActionTypes.DETAILS_INFOS_RESET
     constructor() { }
 }
 

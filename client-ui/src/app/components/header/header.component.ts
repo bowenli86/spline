@@ -15,7 +15,7 @@
  */
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { combineLatest, of, Observable } from 'rxjs'
+import { combineLatest, Observable, of } from 'rxjs'
 import { filter, first, map } from 'rxjs/operators'
 import { AppState } from 'src/app/model/app-state'
 import { RouterStateUrl } from 'src/app/model/routerStateUrl'
@@ -48,7 +48,8 @@ export class HeaderComponent {
           )
       case 'lineage-detailed':
         return this.isSelectedMenuItem(name)
-      default: return of(false)
+      default:
+        return of(false)
     }
   }
 

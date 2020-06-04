@@ -14,14 +14,14 @@
   ~ limitations under the License.
   -->
 <div *ngFor="let property of properties ;let i=index">
-    <mat-expansion-panel [expanded]="true">
-        <mat-expansion-panel-header>
-            <i class="fa fa-xs" aria-hidden="true" [style.color]=getColor()>{{getIcon()}}</i> <strong> {{property.type}}</strong>
-        </mat-expansion-panel-header>
-        <div id="property{{i}}" class="accordion-body collapse in show">
-            <ngx-json-viewer [json]="property.value"
-                             [expanded]="false">
-            </ngx-json-viewer>
-        </div>
-    </mat-expansion-panel>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <i [style.color]=getColor() aria-hidden="true" class="fa fa-xs">{{getIcon()}}</i> <strong> {{property.type}}</strong>
+    </mat-expansion-panel-header>
+    <div class="accordion-body collapse in show" id="property{{i}}">
+      <ngx-json-viewer [expanded]="false"
+                       [json]="property.value">
+      </ngx-json-viewer>
+    </div>
+  </mat-expansion-panel>
 </div>

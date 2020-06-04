@@ -43,6 +43,15 @@ export class LineageGraphComponent implements OnChanges, AfterViewInit {
 
   @Input()
   layout: object
+  @Input()
+  selectedNode: string
+  @Input()
+  attributeLineageAndImpactGraph: AttributeLineageAndImpact
+  @Output()
+  selectedNodeChange = new EventEmitter<string>()
+  @ViewChild(CytoscapeNgLibComponent, { static: true })
+  private cytograph: CytoscapeNgLibComponent
+  private _data: CytoscapeGraphVM
 
   @Input()
   set graph(data: CytoscapeGraphVM) {
@@ -54,20 +63,6 @@ export class LineageGraphComponent implements OnChanges, AfterViewInit {
       color: operationColorCodes.get(OperationType.Write)
     }
   }
-
-  @Input()
-  selectedNode: string
-
-  @Input()
-  attributeLineageAndImpactGraph: AttributeLineageAndImpact
-
-  @Output()
-  selectedNodeChange = new EventEmitter<string>()
-
-  @ViewChild(CytoscapeNgLibComponent, { static: true })
-  private cytograph: CytoscapeNgLibComponent
-
-  private _data: CytoscapeGraphVM
 
   ngOnChanges(changes: SimpleChanges): void {
     const changeExceptFirst = (prop: string): SimpleChange | undefined => {

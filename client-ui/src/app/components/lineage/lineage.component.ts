@@ -73,7 +73,7 @@ export class LineageComponent implements OnDestroy {
 
     this.subscriptions.push(this.store
       .select('attributeLineageAndImpact').pipe(filter(_.identity))
-      .subscribe(({impact}: AttributeLineageAndImpact) => {
+      .subscribe(({ impact }: AttributeLineageAndImpact) => {
         if (!this.selectedNodeId) {
           const primaryAttr = getImpactRootAttributeNode(impact)
           this.onNodeSelected(primaryAttr.originOpId)
@@ -104,14 +104,14 @@ export class LineageComponent implements OnDestroy {
         this.store.select('executedLogicalPlan').pipe(filter(_.identity)),
         this.store.select('router', 'state', 'queryParams', 'attribute')
       ]).pipe(
-        map(([{executionPlan: {extra: {attributes}}}, attrId]) =>
+        map(([{ executionPlan: { extra: { attributes } } }, attrId]) =>
           attrId && (attributes as AttributeVM[]).find(a => a.id === attrId)
         )
       )
 
     this.lineageGraphLegendsToShow$ =
       this.store.select('attributeLineageAndImpact').pipe(filter(_.identity)).pipe(
-        map(({lineage, impact}: AttributeLineageAndImpact) => {
+        map(({ lineage, impact }: AttributeLineageAndImpact) => {
           const lineageNonEmpty = lineage && lineage.edges.length > 0
           const impactNonEmpty = impact.edges.length > 0
           return [

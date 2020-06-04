@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core'
-import {AttributeVM} from '../../../model/viewModels/attributeVM'
-import {LineageGraphLegend} from '../../../model/lineage-graph'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
+import { LineageGraphLegend } from '../../../model/lineage-graph'
+import { AttributeVM } from '../../../model/viewModels/attributeVM'
 
 
 @Component({

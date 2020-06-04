@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component } from '@angular/core';
-import { PropertiesComponent } from '../properties/properties.component';
+import { Component } from '@angular/core'
+import { PropertiesComponent } from '../properties/properties.component'
+
 
 @Component({
   selector: 'projection',
@@ -22,4 +23,5 @@ import { PropertiesComponent } from '../properties/properties.component';
   styleUrls: ['./projection.component.scss']
 })
 
-export class ProjectionComponent extends PropertiesComponent { }
+export class ProjectionComponent extends PropertiesComponent {
+}

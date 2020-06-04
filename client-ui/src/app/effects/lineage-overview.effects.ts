@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Injectable} from '@angular/core'
-import { ofType, Actions, Effect } from '@ngrx/effects'
+import { Injectable } from '@angular/core'
+import { Actions, Effect, ofType } from '@ngrx/effects'
 import { Action, Store } from '@ngrx/store'
 import * as _ from 'lodash'
 import { Observable } from 'rxjs'
@@ -123,7 +123,7 @@ export class LineageOverviewEffects {
       executionEventId: executionEventId
     }
 
-    lineageOverviewVM.depthComputed = 20 // lineageOverview.graph.depthComputed ? lineageOverview.graph.depthComputed : 0
+    lineageOverviewVM.depthComputed = lineageOverview.graph.depthComputed ? lineageOverview.graph.depthComputed : 0
     lineageOverviewVM.depthRequested = lineageOverview.graph.depthRequested ? lineageOverview.graph.depthRequested : 0
     lineageOverviewVM.hasMoreNodes = lineageOverviewVM.depthComputed && lineageOverviewVM.depthComputed >= lineageOverviewVM.depthRequested
 

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
-import { debounceTime, switchMap } from 'rxjs/operators';
-import { FoundAttribute } from '../../../generated/models/found-attribute';
-import { AppState } from '../../../model/app-state';
-import { AttributeSearchService } from '../../../service/attribute-search.service';
-import * as RouterAction from '../../../store/actions/router.actions';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { Observable, of } from 'rxjs'
+import { debounceTime, switchMap } from 'rxjs/operators'
+import { FoundAttribute } from '../../../generated/models/found-attribute'
+import { AppState } from '../../../model/app-state'
+import { AttributeSearchService } from '../../../service/attribute-search.service'
+import * as RouterAction from '../../../store/actions/router.actions'
 
 
 @Component({
@@ -36,7 +36,8 @@ export class AttributeSearchBarComponent {
   constructor(
     private store: Store<AppState>,
     private attributeService: AttributeSearchService
-  ) { }
+  ) {
+  }
 
   public search = (text$: Observable<string>): Observable<FoundAttribute[]> =>
     text$.pipe(
@@ -48,18 +49,21 @@ export class AttributeSearchBarComponent {
 
   public onItemSelected = (selectedAttribute: FoundAttribute) => {
     this.store.dispatch(new RouterAction.Go({
-      url: "/app/lineage-detailed/" + selectedAttribute.executionEventId,
-      queryParams: {'attribute': selectedAttribute.id}
+      url: '/app/lineage-detailed/' + selectedAttribute.executionEventId,
+      queryParams: { 'attribute': selectedAttribute.id }
     }))
 
-    return ""
+    return ''
   }
 
   public getTypeString(attribute: FoundAttribute) {
-    switch (attribute.attributeType["_typeHint"]) {
-      case 'dt.Struct': return 'struct {...}'
-      case 'dt.Array': return 'array [...]'
-      default: return attribute.attributeType.name
+    switch (attribute.attributeType['_typeHint']) {
+      case 'dt.Struct':
+        return 'struct {...}'
+      case 'dt.Array':
+        return 'array [...]'
+      default:
+        return attribute.attributeType.name
     }
   }
 }

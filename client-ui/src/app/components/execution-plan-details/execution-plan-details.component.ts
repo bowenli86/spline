@@ -19,6 +19,7 @@ import { Observable } from 'rxjs'
 import { AppState } from 'src/app/model/app-state'
 import { ExecutedLogicalPlanVM } from 'src/app/model/viewModels/executedLogicalPlanVM'
 
+
 @Component({
   selector: 'execution-plan-details',
   templateUrl: './execution-plan-details.component.html',
@@ -29,7 +30,8 @@ export class ExecutionPlanDetailsComponent {
 
   constructor(
     private store: Store<AppState>
-  ) { }
+  ) {
+  }
 
   getExecutionPlanVM(): Observable<ExecutedLogicalPlanVM> {
     return this.store.select('executedLogicalPlan')

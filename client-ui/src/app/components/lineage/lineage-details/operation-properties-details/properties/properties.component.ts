@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, Input, OnDestroy } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { ModalExpressionComponent } from 'src/app/components/modal/modal-expression/modal-expression.component';
-import { AppState } from 'src/app/model/app-state';
-import { Property, PropertyType, PropertyTypeAware } from 'src/app/model/property';
-import * as ModalAction from 'src/app/store/actions/modal.actions';
-import { getOperationColor, getOperationIcon } from 'src/app/util/execution-plan';
+import { Component, Input, OnDestroy } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { Subscription } from 'rxjs'
+import { ModalExpressionComponent } from 'src/app/components/modal/modal-expression/modal-expression.component'
+import { AppState } from 'src/app/model/app-state'
+import { Property, PropertyType, PropertyTypeAware } from 'src/app/model/property'
+import * as ModalAction from 'src/app/store/actions/modal.actions'
+import { getOperationColor, getOperationIcon } from 'src/app/util/execution-plan'
 
 
 @Component({
@@ -31,20 +31,17 @@ import { getOperationColor, getOperationIcon } from 'src/app/util/execution-plan
 @PropertyTypeAware
 export class PropertiesComponent implements OnDestroy {
 
-  constructor(private store: Store<AppState>) { }
-
-  private subscriptions: Subscription[] = []
-
   @Input()
   public propertyType: string
-
   @Input()
   public propertyName: string
-
   @Input()
   public properties: Property[]
-
   PropertyType = PropertyType
+  private subscriptions: Subscription[] = []
+
+  constructor(private store: Store<AppState>) {
+  }
 
   public getIcon(): string {
     return getOperationIcon(this.propertyType, this.propertyName)

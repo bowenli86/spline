@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
-import {NgbTimeStruct} from "@ng-bootstrap/ng-bootstrap";
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core'
+import { NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap'
+
 
 @Component({
   selector: 'time-picker',
@@ -38,7 +39,8 @@ export class TimePickerComponent implements OnChanges {
 
   public onModelChange(updatedModel: NgbTimeStruct): void {
     this.valid = !!updatedModel
-    if (this.valid)
+    if (this.valid) {
       this.modelChange.emit(updatedModel)
+    }
   }
 }

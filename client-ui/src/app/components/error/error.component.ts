@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/model/app-state';
-import { ApplicationErrorGet } from 'src/app/store/actions/error.actions';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Store } from '@ngrx/store'
+import { Observable, Subscription } from 'rxjs'
+import { AppState } from 'src/app/model/app-state'
+import { ApplicationErrorGet } from 'src/app/store/actions/error.actions'
+
 
 @Component({
   selector: 'app-error',
@@ -27,11 +28,12 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ErrorComponent implements OnInit, OnDestroy {
 
+  private subscriptions: Subscription[] = []
+
   constructor(
     private store: Store<AppState>
-  ) { }
-
-  private subscriptions: Subscription[] = []
+  ) {
+  }
 
   public ngOnInit(): void {
     this.subscriptions.push(

@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Component, EventEmitter, Input, OnChanges, Output, ViewChild} from '@angular/core';
-import {DataTypeType} from 'src/app/model/types/dataTypeType';
-import {StructFieldVM} from 'src/app/model/viewModels/attributeVM';
-import {DataTypeVM} from "../../../../model/viewModels/dataTypeVM";
+import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core'
+import { DataTypeType } from 'src/app/model/types/dataTypeType'
+import { StructFieldVM } from 'src/app/model/viewModels/attributeVM'
+import { DataTypeVM } from '../../../../model/viewModels/dataTypeVM'
+
 
 @Component({
   selector: 'schema-table',
@@ -25,7 +26,7 @@ import {DataTypeVM} from "../../../../model/viewModels/dataTypeVM";
 })
 export class SchemaTableComponent implements OnChanges {
 
-  @ViewChild('table', {static: true})
+  @ViewChild('table', { static: true })
   public table: any
 
   @Input()
@@ -36,14 +37,13 @@ export class SchemaTableComponent implements OnChanges {
 
   @Input()
   public selectedField: StructFieldVM
+  @Output()
+  public selectedFieldChanged = new EventEmitter<StructFieldVM>()
 
   ngOnChanges(): void {
     this.table.selected = this.selectedField ? [this.selectedField] : []
     this.table.cd.markForCheck()
   }
-
-  @Output()
-  public selectedFieldChanged = new EventEmitter<StructFieldVM>()
 
   public getArrayInnermostElementTypeWithNestingLevel = (dt: DataTypeVM, level = 1): [DataTypeVM, number] => {
     return dt.elementDataType.dataType._type === DataTypeType.Array
@@ -53,7 +53,7 @@ export class SchemaTableComponent implements OnChanges {
 
   public selectCheck = (): boolean => this.selectable
 
-  public onSelect = ({selected}): void => {
+  public onSelect = ({ selected }): void => {
     this.selectedFieldChanged.emit(selected[0])
   }
 

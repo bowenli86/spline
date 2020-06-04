@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
-import * as _ from "lodash"
-import { dateToStruct, structToDate } from 'src/app/util/date-converter';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap'
+import * as _ from 'lodash'
+import { dateToStruct, structToDate } from 'src/app/util/date-converter'
+
 
 type Model = [NgbDateStruct, NgbDateStruct]
 type BsModel = [Date, Date]
@@ -30,6 +31,8 @@ export class DateRangePickerComponent {
   public bsMinDate: Date
   public bsMaxDate: Date
   public bsModel: BsModel
+  @Output()
+  public modelChange = new EventEmitter<NgbDateStruct[]>()
 
   @Input()
   public set minDate(ngbDate: NgbDateStruct) {
@@ -45,9 +48,6 @@ export class DateRangePickerComponent {
   public set model(dates: Model) {
     this.bsModel = dates.map(structToDate) as BsModel
   }
-
-  @Output()
-  public modelChange = new EventEmitter<NgbDateStruct[]>()
 
   public onBsModelChange(updatedBsModel: BsModel): void {
     if (!_.isEqual(this.bsModel, updatedBsModel)) {

@@ -47,6 +47,7 @@
       "ignore-static"
     ],
     "semicolon": false,
-    "whitespace": [true, "check-module"]
+    "whitespace": [true, "check-module"],
+    "interface-over-type-literal": false
   }
 }
