@@ -15,22 +15,22 @@
  */
 
 .details-title {
-    color: #555;
-    font-size: 110%;
-    font-weight: bold;
-    padding-top: 10px;
-    text-align: center;
+  color: #555;
+  font-size: 110%;
+  font-weight: bold;
+  padding-top: 10px;
+  text-align: center;
 }
 
 .execution-details-title {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 ::ng-deep .mat-content,
 ::ng-deep .mat-expansion-panel-header-title {
-    display: inline-block !important;
+  display: inline-block !important;
 
-    strong {
-        font-weight: normal;
-    }
+  strong {
+    font-weight: normal;
+  }
 }
