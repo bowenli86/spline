@@ -25,14 +25,16 @@ import { RouterStateUrl } from 'src/app/model/routerStateUrl'
 import * as DashboardActions from 'src/app/store/actions/dashboard.actions'
 import * as ExecutionEventsActions from 'src/app/store/actions/execution-events.actions'
 import * as RouterAction from 'src/app/store/actions/router.actions'
+
 import { PageableExecutionEventsResponse } from '../../generated/models/pageable-execution-events-response'
 import { DashboardVM } from '../../model/viewModels/dashboardVM'
 import { DateRange, Timestamp } from '../time-frame-picker/time-frame-picker.model'
+
 import { DashboardLoadingIndicator } from './dashboard.loading-indicator'
 import { TablePage, TableSort } from './dashboard.model'
 
 
-const SEARCH_TERM_UPDATE_DELAY = 300 //millis
+const SEARCH_TERM_UPDATE_DELAY = 300 // millis
 
 @Component({
   selector: 'dashboard',
@@ -41,11 +43,11 @@ const SEARCH_TERM_UPDATE_DELAY = 300 //millis
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnDestroy {
-  public readonly loadingIndicator = new DashboardLoadingIndicator
-  public executionEvents: PageableExecutionEventsResponse = {}
-  public dashboardState: DashboardVM
-  public sort: TableSort
-  public readonly onSearchTermChange: (_: KeyboardEvent) => void = _.debounce(
+  readonly loadingIndicator = new DashboardLoadingIndicator
+  executionEvents: PageableExecutionEventsResponse = {}
+  dashboardState: DashboardVM
+  sort: TableSort
+  readonly onSearchTermChange: (_: KeyboardEvent) => void = _.debounce(
     (input: KeyboardEvent) =>
       this.store.dispatch(new DashboardActions.SetSearchQuery((input.target as HTMLInputElement).value)),
     SEARCH_TERM_UPDATE_DELAY)
@@ -78,34 +80,34 @@ export class DashboardComponent implements OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe())
   }
 
-  public onSelect(event): void {
+  onSelect(event): void {
     const executionEventId = event.selected[0].executionEventId
     const params = {} as RouterStateUrl
-    params.queryParams = { 'executionEventId': executionEventId }
+    params.queryParams = { executionEventId: executionEventId }
     params.url = '/app/lineage-overview/'
     this.store.dispatch(new RouterAction.Go(params))
   }
 
-  public onFilterByDateSwitchToggle(switchOn: MatSlideToggleChange): void {
+  onFilterByDateSwitchToggle(switchOn: MatSlideToggleChange): void {
     const dateRange = switchOn.checked
       ? this.executionEvents.totalDateRange as DateRange
       : undefined
     this.store.dispatch(new DashboardActions.SetDateRange(dateRange))
   }
 
-  public onDateRangeSelected(range: DateRange): void {
+  onDateRangeSelected(range: DateRange): void {
     this.store.dispatch(new DashboardActions.SetDateRange(range))
   }
 
-  public onPageChange(page: TablePage): void {
+  onPageChange(page: TablePage): void {
     this.store.dispatch(new DashboardActions.SetPageNumber(page.offset + 1))
   }
 
-  public onSortChange(sort: TableSort): void {
+  onSortChange(sort: TableSort): void {
     this.store.dispatch(new DashboardActions.SetSortOrder(sort.prop, sort.dir))
   }
 
-  public getFrameworkIconClass(frameworkName: string): string {
+  getFrameworkIconClass(frameworkName: string): string {
     return /^spark\b/i.test(frameworkName) ? 'spark' : 'other'
   }
 

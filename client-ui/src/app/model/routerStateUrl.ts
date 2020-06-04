@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { Params } from "@angular/router";
+import { Params } from '@angular/router'
+
 
 export interface RouterStateUrl {
     url: string;

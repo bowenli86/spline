@@ -15,7 +15,7 @@
  */
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { combineLatest, Observable, of } from 'rxjs'
+import { combineLatest, of, Observable } from 'rxjs'
 import { filter, first, map } from 'rxjs/operators'
 import { AppState } from 'src/app/model/app-state'
 import { RouterStateUrl } from 'src/app/model/routerStateUrl'

@@ -17,18 +17,19 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap'
 import moment from 'moment'
+
 import { DateRange, Timestamp } from './time-frame-picker.model'
 
 
 type ViewModel = [LocalDateTimeModel, LocalDateTimeModel]
 
 interface LocalDateTimeModel {
-  time: NgbTimeStructWithMillis
-  date: NgbDateStruct
+  time: NgbTimeStructWithMillis;
+  date: NgbDateStruct;
 }
 
 interface NgbTimeStructWithMillis extends NgbTimeStruct {
-  millis: number
+  millis: number;
 }
 
 @Component({
@@ -36,18 +37,18 @@ interface NgbTimeStructWithMillis extends NgbTimeStruct {
   templateUrl: './time-frame-picker.component.html'
 })
 export class TimeFramePickerComponent {
-  public model: ViewModel
-  public modelBoundaries: ViewModel
+  model: ViewModel
+  modelBoundaries: ViewModel
   @Output()
-  public rangeChange = new EventEmitter<DateRange>()
+  rangeChange = new EventEmitter<DateRange>()
 
   @Input()
-  public set range(range: DateRange) {
+  set range(range: DateRange) {
     this.model = <ViewModel>range.map(TimeFramePickerComponent.timestampToLdt)
   }
 
   @Input()
-  public set rangeBoundaries(boundaries: DateRange | undefined) {
+  set rangeBoundaries(boundaries: DateRange | undefined) {
     this.modelBoundaries = boundaries
       ? <ViewModel>boundaries.map(TimeFramePickerComponent.timestampToLdt)
       : this.model
@@ -82,17 +83,17 @@ export class TimeFramePickerComponent {
     ])
   }
 
-  public onTimeFromChange(time: NgbTimeStruct): void {
+  onTimeFromChange(time: NgbTimeStruct): void {
     const [from, till] = this.model
     this.onModelChange([{ ...from, time: { ...time, second: 0, millis: 0 } }, till])
   }
 
-  public onTimeTillChange(time: NgbTimeStruct): void {
+  onTimeTillChange(time: NgbTimeStruct): void {
     const [from, till] = this.model
     this.onModelChange([from, { ...till, time: { ...time, second: 59, millis: 999 } }])
   }
 
-  public onSelectedDatesChange([dateFrom, dateTill]: NgbDateStruct[]): void {
+  onSelectedDatesChange([dateFrom, dateTill]: NgbDateStruct[]): void {
     this.onModelChange([
       { date: dateFrom, time: { hour: 0, minute: 0, second: 0, millis: 0 } },
       { date: dateTill, time: { hour: 23, minute: 59, second: 59, millis: 999 } }

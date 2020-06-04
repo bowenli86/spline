@@ -15,6 +15,7 @@
  */
 
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
+
 import { LineageGraphLegend } from '../../../model/lineage-graph'
 import { AttributeVM } from '../../../model/viewModels/attributeVM'
 
@@ -35,7 +36,7 @@ export class LineageHighlightsToolbarComponent {
 
   @Output() removeAttribute$ = new EventEmitter<AttributeVM>()
 
-  public onAttributeRemoveIconClicked(attribute: AttributeVM): void {
+  onAttributeRemoveIconClicked(attribute: AttributeVM): void {
     this.removeAttribute$.emit(attribute)
   }
 }

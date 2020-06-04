@@ -32,30 +32,30 @@ import { getOperationColor, getOperationIcon } from 'src/app/util/execution-plan
 export class PropertiesComponent implements OnDestroy {
 
   @Input()
-  public propertyType: string
+  propertyType: string
   @Input()
-  public propertyName: string
+  propertyName: string
   @Input()
-  public properties: Property[]
+  properties: Property[]
   PropertyType = PropertyType
   private subscriptions: Subscription[] = []
 
   constructor(private store: Store<AppState>) {
   }
 
-  public getIcon(): string {
+  getIcon(): string {
     return getOperationIcon(this.propertyType, this.propertyName)
   }
 
-  public getColor(): string {
+  getColor(): string {
     return getOperationColor(this.propertyType, this.propertyName)
   }
 
-  public propertiesContain(propertyType: PropertyType): boolean {
+  propertiesContain(propertyType: PropertyType): boolean {
     return this.properties.filter(p => p.type === propertyType).length > 0
   }
 
-  public openExprViewDialog(event: Event, expression: Property): void {
+  openExprViewDialog(event: Event, expression: Property): void {
     event.preventDefault()
     this.subscriptions.push(
       this.store

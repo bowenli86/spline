@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { Injectable } from '@angular/core'
-import { Actions, Effect, ofType } from '@ngrx/effects'
+import { ofType, Actions, Effect } from '@ngrx/effects'
 import { Action, Store } from '@ngrx/store'
 import * as _ from 'lodash'
 import { Observable } from 'rxjs'

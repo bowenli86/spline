@@ -29,24 +29,24 @@ import { OperationDetailsVM } from 'src/app/model/viewModels/operationDetailsVM'
 export class LineageOverviewDetailsComponent {
 
   @Input()
-  public embeddedMode: boolean
+  embeddedMode: boolean
 
   constructor(private store: Store<AppState>) {
   }
 
-  public getLineageOverviewInfo = (): Observable<{ [key: string]: {} }> => {
+  getLineageOverviewInfo = (): Observable<{ [key: string]: {} }> => {
     return this.store.select('lineageOverview', 'lineageInfo')
   }
 
-  public getDetailsInfo = (): Observable<OperationDetailsVM> => {
+  getDetailsInfo = (): Observable<OperationDetailsVM> => {
     return this.store.select('detailsInfos')
   }
 
-  public getOutputSchema = (operationDetails: OperationDetailsVM): AttributeVM[] => {
+  getOutputSchema = (operationDetails: OperationDetailsVM): AttributeVM[] => {
     return operationDetails.schemas[operationDetails.output]
   }
 
-  public getTargetName = (): Observable<any> => {
+  getTargetName = (): Observable<any> => {
     return this.store.select('lineageOverview', 'lineageInfo', 'targetNodeName')
   }
 }

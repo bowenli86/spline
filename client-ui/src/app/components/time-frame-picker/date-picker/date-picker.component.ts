@@ -21,7 +21,7 @@ import moment from 'moment'
 import { dateToStruct, structToDate } from 'src/app/util/date-converter'
 
 
-const MODEL_UPDATE_DELAY_ON_TYPING = 500 //millis
+const MODEL_UPDATE_DELAY_ON_TYPING = 500 // millis
 
 @Component({
   selector: 'date-picker',
@@ -29,12 +29,12 @@ const MODEL_UPDATE_DELAY_ON_TYPING = 500 //millis
 })
 export class DatePickerComponent {
 
-  public bsModel: Date
-  public bsMinDate: Date
-  public bsMaxDate: Date
-  @Output() public modelChange = new EventEmitter<NgbDateStruct>()
-  public valid: boolean = true
-  public readonly onModelChange: (_: Date) => void = _.debounce(
+  bsModel: Date
+  bsMinDate: Date
+  bsMaxDate: Date
+  @Output() modelChange = new EventEmitter<NgbDateStruct>()
+  valid = true
+  readonly onModelChange: (_: Date) => void = _.debounce(
     (updatedModel: Date) => {
       this.valid = moment(updatedModel).isValid()
       if (this.valid && !_.isEqual(this.bsModel, updatedModel)) {
@@ -47,17 +47,17 @@ export class DatePickerComponent {
   }
 
   @Input()
-  public set model(date: NgbDateStruct) {
+  set model(date: NgbDateStruct) {
     this.bsModel = moment(structToDate(date)).toDate()
   }
 
   @Input()
-  public set minDate(minDate: NgbDateStruct) {
+  set minDate(minDate: NgbDateStruct) {
     this.bsMinDate = structToDate(minDate)
   }
 
   @Input()
-  public set maxDate(maxDate: NgbDateStruct) {
+  set maxDate(maxDate: NgbDateStruct) {
     this.bsMaxDate = structToDate(maxDate)
   }
 

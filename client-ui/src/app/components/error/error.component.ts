@@ -35,7 +35,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.subscriptions.push(
       this.store
         .select('router', 'state', 'params')
@@ -43,7 +43,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
     )
   }
 
-  public getError = (): Observable<string> => {
+  getError = (): Observable<string> => {
     return this.store.select('error')
   }
 

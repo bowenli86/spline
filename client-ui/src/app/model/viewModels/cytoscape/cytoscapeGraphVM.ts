@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {GraphNode} from './graphNodeVM';
-import {GraphEdge} from './graphEdgeVM';
+import { GraphEdge } from './graphEdgeVM'
+import { GraphNode } from './graphNodeVM'
+
 
 export type CytoscapeGraphVM = {
-    nodes: Array<GraphNode>
-    edges: Array<GraphEdge>
+    nodes: Array<GraphNode>;
+    edges: Array<GraphEdge>;
 }

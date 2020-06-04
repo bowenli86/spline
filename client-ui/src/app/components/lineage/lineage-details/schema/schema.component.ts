@@ -17,6 +17,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
 import * as _ from 'lodash'
 import { SchemaType } from 'src/app/model/types/schemaType'
+
 import { AttributeVM, StructFieldVM } from '../../../../model/viewModels/attributeVM'
 
 
@@ -27,29 +28,29 @@ import { AttributeVM, StructFieldVM } from '../../../../model/viewModels/attribu
 export class SchemaComponent {
 
   @Input()
-  public schemaType: SchemaType
+  schemaType: SchemaType
   @Input()
-  public selectedAttributeId: string
+  selectedAttributeId: string
   @Output()
-  public selectedAttributeIdChanged = new EventEmitter<string>()
+  selectedAttributeIdChanged = new EventEmitter<string>()
   private _schema: AttributeVM[]
   private attrById: { [key: string]: AttributeVM } = {}
 
-  public get schema(): AttributeVM[] {
+  get schema(): AttributeVM[] {
     return this._schema
   }
 
   @Input()
-  public set schema(schema: AttributeVM[]) {
+  set schema(schema: AttributeVM[]) {
     this._schema = schema
     this.attrById = _.keyBy(schema, attr => attr.id)
   }
 
-  public selectedAttribute(): AttributeVM {
+  selectedAttribute(): AttributeVM {
     return this.attrById[this.selectedAttributeId]
   }
 
-  public onAttributeSelected(attr: StructFieldVM) {
+  onAttributeSelected(attr: StructFieldVM) {
     this.selectedAttributeIdChanged.emit((attr as AttributeVM).id)
   }
 }

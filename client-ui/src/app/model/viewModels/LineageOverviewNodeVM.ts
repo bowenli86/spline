@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-import {LineageOverviewNode} from "src/app/generated/models";
+import { LineageOverviewNode } from 'src/app/generated/models'
+
 
 export type LineageOverviewNodeVM = LineageOverviewNode & {
-    _id: string
-    name: string
-    _type: string
-    writesTo?: string
+    _id: string;
+    name: string;
+    _type: string;
+    writesTo?: string;
 }

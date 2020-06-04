@@ -10,6 +10,7 @@
     "test": "ng test",
     "lint": "ng lint && npm run lint:styles",
     "lint:ts": "eslint src/**/*.ts",
+    "lint:ts:fix": "eslint src/**/*.ts --fix",
     "lint:styles": "stylelint src/**/*.scss",
     "lint:styles:fix": "stylelint src/**/*.scss --fix",
     "e2e": "ng e2e",

@@ -28,28 +28,30 @@ type BsModel = [Date, Date]
   templateUrl: './date-range-picker.component.html'
 })
 export class DateRangePickerComponent {
-  public bsMinDate: Date
-  public bsMaxDate: Date
-  public bsModel: BsModel
+
   @Output()
-  public modelChange = new EventEmitter<NgbDateStruct[]>()
+  modelChange = new EventEmitter<NgbDateStruct[]>()
 
   @Input()
-  public set minDate(ngbDate: NgbDateStruct) {
+  set minDate(ngbDate: NgbDateStruct) {
     this.bsMinDate = structToDate(ngbDate)
   }
 
   @Input()
-  public set maxDate(ngbDate: NgbDateStruct) {
+  set maxDate(ngbDate: NgbDateStruct) {
     this.bsMaxDate = structToDate(ngbDate)
   }
 
   @Input()
-  public set model(dates: Model) {
+  set model(dates: Model) {
     this.bsModel = dates.map(structToDate) as BsModel
   }
 
-  public onBsModelChange(updatedBsModel: BsModel): void {
+  bsMinDate: Date
+  bsMaxDate: Date
+  bsModel: BsModel
+
+  onBsModelChange(updatedBsModel: BsModel): void {
     if (!_.isEqual(this.bsModel, updatedBsModel)) {
       const newDates = updatedBsModel.map(dateToStruct)
       this.modelChange.emit(newDates)

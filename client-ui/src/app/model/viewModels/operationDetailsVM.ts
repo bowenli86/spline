@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 import { Operation } from 'src/app/generated/models'
+
 import { AttributeVM } from './attributeVM'
 
 
 export type OperationDetailsVM = {
-    operation: Operation
-    schemas: Array<Array<AttributeVM>>
-    output: number
-    inputs: Array<number>
+    operation: Operation;
+    schemas: Array<Array<AttributeVM>>;
+    output: number;
+    inputs: Array<number>;
 }

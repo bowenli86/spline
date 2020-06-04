@@ -35,7 +35,9 @@ import { AttributeVM } from 'src/app/model/viewModels/attributeVM'
 import { OperationDetailsVM } from 'src/app/model/viewModels/operationDetailsVM'
 import { getOperationColor, getOperationIcon } from 'src/app/util/execution-plan'
 import { getText } from 'src/app/util/expressions'
+
 import * as RouterAction from '../../../../store/actions/router.actions'
+
 import { PropertiesComponent } from './properties/properties.component'
 
 
@@ -48,7 +50,7 @@ export class OperationPropertiesDetailsComponent implements AfterViewInit, OnDes
 
   @ViewChildren('propertiesPanel', { read: ViewContainerRef })
   propertiesPanel: QueryList<ViewContainerRef>
-  public selectedAttributeId$ =
+  selectedAttributeId$ =
     this.store.select('router', 'state', 'queryParams', 'attribute')
   private subscriptions: Subscription[] = []
 
@@ -58,11 +60,11 @@ export class OperationPropertiesDetailsComponent implements AfterViewInit, OnDes
     private store: Store<AppState>) {
   }
 
-  public onSelectedAttributeIdChange(attrId: string) {
-    this.store.dispatch(new RouterAction.Go({ queryParams: { 'attribute': attrId }, url: null }))
+  onSelectedAttributeIdChange(attrId: string) {
+    this.store.dispatch(new RouterAction.Go({ queryParams: { attribute: attrId }, url: null }))
   }
 
-  public ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     this.subscriptions.push(
       this.propertiesPanel.changes.pipe(
         switchMap(_ =>
@@ -92,10 +94,12 @@ export class OperationPropertiesDetailsComponent implements AfterViewInit, OnDes
           try {
             properties = this.getProperties(store.detailsInfos, store.attributes)
             component = type === OperationType.Write ? PropertiesComponents.get(OperationType.Write) : PropertiesComponents.get(name)
-          } catch (error) {
+          }
+          catch (error) {
             console.error(error)
             component = PropertiesComponents.get(OperationType.Error)
-          } finally {
+          }
+          finally {
             const factory = this.componentFactoryResolver.resolveComponentFactory(component)
             const instance = container.createComponent(factory).instance
             instance.properties = properties
@@ -110,21 +114,21 @@ export class OperationPropertiesDetailsComponent implements AfterViewInit, OnDes
     )
   }
 
-  public getDetailsInfo(): Observable<OperationDetailsVM> {
+  getDetailsInfo(): Observable<OperationDetailsVM> {
     return this.store.select('detailsInfos')
   }
 
-  public getIcon(operationType: string, operationName: string): string {
+  getIcon(operationType: string, operationName: string): string {
     return getOperationIcon(operationType, operationName)
   }
 
-  public getColor(operationType: string, operationName: string): string {
+  getColor(operationType: string, operationName: string): string {
     return getOperationColor(operationType, operationName)
   }
 
-  public getInputSchemas = (operationDetails: OperationDetailsVM): AttributeVM[] => {
+  getInputSchemas = (operationDetails: OperationDetailsVM): AttributeVM[] => {
     if (operationDetails) {
-      let inputSchemas = []
+      const inputSchemas = []
       operationDetails.inputs.forEach(input => {
         inputSchemas.push(operationDetails.schemas[input])
       })
@@ -135,7 +139,7 @@ export class OperationPropertiesDetailsComponent implements AfterViewInit, OnDes
     }
   }
 
-  public getOutputSchema = (operationDetails: OperationDetailsVM): AttributeVM[] => {
+  getOutputSchema = (operationDetails: OperationDetailsVM): AttributeVM[] => {
     return operationDetails && operationDetails.schemas[operationDetails.output]
   }
 
@@ -145,7 +149,7 @@ export class OperationPropertiesDetailsComponent implements AfterViewInit, OnDes
 
   private getProperties(operationDetails: OperationDetailsVM, attributeList: any): Property[] {
     const opInfoProperties = operationDetails.operation.properties
-    let properties = []
+    const properties = []
 
     if (operationDetails.operation._type === OperationType.Write) {
       properties.push(new Property(PropertyType.OutputSource, opInfoProperties.outputSource))

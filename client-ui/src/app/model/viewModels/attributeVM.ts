@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {DataTypeVM} from './dataTypeVM';
+import { DataTypeVM } from './dataTypeVM'
+
 
 export type AttributeVM = StructFieldVM & {
-  id: string
+  id: string;
 }
 
 export type StructFieldVM = {
-  name: string
-  dataType: DataTypeVM
+  name: string;
+  dataType: DataTypeVM;
 }

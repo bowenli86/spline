@@ -18,6 +18,7 @@ import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { filter, map } from 'rxjs/operators'
+
 import { AppState } from '../../model/app-state'
 import * as LineageOverviewAction from '../../store/actions/lineage-overview.actions'
 
@@ -29,8 +30,8 @@ import * as LineageOverviewAction from '../../store/actions/lineage-overview.act
 })
 export class LineageOverviewComponent {
 
-  public lineageState$: Observable<{ depthRequested: number; hasMoreNodes: boolean; }>
-  public embeddedMode$: Observable<boolean>
+  lineageState$: Observable<{ depthRequested: number; hasMoreNodes: boolean }>
+  embeddedMode$: Observable<boolean>
 
   constructor(private store: Store<AppState>) {
 
@@ -46,7 +47,7 @@ export class LineageOverviewComponent {
       )
   }
 
-  public onLoadOlderNodesBtnClicked(): void {
+  onLoadOlderNodesBtnClicked(): void {
     this.store.dispatch(new LineageOverviewAction.GetMoreNodes())
   }
 }

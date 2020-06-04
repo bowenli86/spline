@@ -24,5 +24,5 @@ import { Component, Input } from '@angular/core'
 export class LineageDetailsComponent {
 
   @Input()
-  public embeddedMode: boolean
+  embeddedMode: boolean
 }

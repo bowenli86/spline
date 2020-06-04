@@ -14,34 +14,34 @@
  * limitations under the License.
  */
 export class Property {
-    public type: string
-    public value: any
-    public metadata?: any
+    type: string
+    value: any
+    metadata?: any
 
     constructor(type: PropertyType, value: any, metadata?: any) {
-        this.type = type
-        this.value = value
-        this.metadata = metadata
+      this.type = type
+      this.value = value
+      this.metadata = metadata
     }
 
 }
 
 export enum PropertyType {
-    Join = "Join",
-    Alias = "Alias",
-    Transformations = "Transformations",
-    DroppedAttributes = "Dropped Attributes",
-    Aggregate = "Aggregate",
-    Grouping = "Grouping",
-    InputSource = "InputSource",
-    OutputSource = "OutpuSource",
-    SourceType = "Source Type",
-    Sort = "Sort",
-    Filter = "Filter",
-    Properties = "Properties",
-    Error = "Error"
+    Join = 'Join',
+    Alias = 'Alias',
+    Transformations = 'Transformations',
+    DroppedAttributes = 'Dropped Attributes',
+    Aggregate = 'Aggregate',
+    Grouping = 'Grouping',
+    InputSource = 'InputSource',
+    OutputSource = 'OutpuSource',
+    SourceType = 'Source Type',
+    Sort = 'Sort',
+    Filter = 'Filter',
+    Properties = 'Properties',
+    Error = 'Error'
 }
 
 export function PropertyTypeAware(constructor: Function): void {
-    constructor.prototype.PropertyType = PropertyType
+  constructor.prototype.PropertyType = PropertyType
 }

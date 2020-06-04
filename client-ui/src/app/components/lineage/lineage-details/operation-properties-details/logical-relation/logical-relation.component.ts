@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import { Component } from '@angular/core'
+
 import { PropertiesComponent } from '../properties/properties.component'
 
 

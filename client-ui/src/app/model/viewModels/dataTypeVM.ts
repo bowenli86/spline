@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {AttributeVM} from './attributeVM';
+import { AttributeVM } from './attributeVM'
+
 
 export type DataTypeVM = {
-    _type: string
-    name: string
-    children: Array<AttributeVM>
-    elementDataType: AttributeVM
+    _type: string;
+    name: string;
+    children: Array<AttributeVM>;
+    elementDataType: AttributeVM;
 }

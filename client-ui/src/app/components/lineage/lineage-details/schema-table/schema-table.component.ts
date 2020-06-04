@@ -16,6 +16,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core'
 import { DataTypeType } from 'src/app/model/types/dataTypeType'
 import { StructFieldVM } from 'src/app/model/viewModels/attributeVM'
+
 import { DataTypeVM } from '../../../../model/viewModels/dataTypeVM'
 
 
@@ -27,37 +28,37 @@ import { DataTypeVM } from '../../../../model/viewModels/dataTypeVM'
 export class SchemaTableComponent implements OnChanges {
 
   @ViewChild('table', { static: true })
-  public table: any
+  table: any
 
   @Input()
-  public schema: StructFieldVM[]
+  schema: StructFieldVM[]
 
   @Input()
-  public selectable: boolean = true
+  selectable = true
 
   @Input()
-  public selectedField: StructFieldVM
+  selectedField: StructFieldVM
   @Output()
-  public selectedFieldChanged = new EventEmitter<StructFieldVM>()
+  selectedFieldChanged = new EventEmitter<StructFieldVM>()
 
   ngOnChanges(): void {
     this.table.selected = this.selectedField ? [this.selectedField] : []
     this.table.cd.markForCheck()
   }
 
-  public getArrayInnermostElementTypeWithNestingLevel = (dt: DataTypeVM, level = 1): [DataTypeVM, number] => {
+  getArrayInnermostElementTypeWithNestingLevel = (dt: DataTypeVM, level = 1): [DataTypeVM, number] => {
     return dt.elementDataType.dataType._type === DataTypeType.Array
       ? this.getArrayInnermostElementTypeWithNestingLevel(dt.elementDataType.dataType, level + 1)
       : [dt.elementDataType.dataType, level]
   }
 
-  public selectCheck = (): boolean => this.selectable
+  selectCheck = (): boolean => this.selectable
 
-  public onSelect = ({ selected }): void => {
+  onSelect = ({ selected }): void => {
     this.selectedFieldChanged.emit(selected[0])
   }
 
-  public onStructTypeClick = (e: Event, row: any) => {
+  onStructTypeClick = (e: Event, row: any) => {
     e.stopPropagation()
     this.table.rowDetail.toggleExpandRow(row)
   }
