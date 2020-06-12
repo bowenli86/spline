@@ -22,6 +22,11 @@ import { IExpression } from 'src/app/model/expression-model'
 import * as ModalAction from 'src/app/store/actions/modal.actions'
 import { getName } from 'src/app/util/expressions'
 
+export type NodeInfo = {
+    id: number
+    name: string
+    children: NodeInfo[] | undefined
+}
 
 @Component({
     selector: 'app-modal-expression',
@@ -31,7 +36,7 @@ import { getName } from 'src/app/util/expressions'
 export class ModalExpressionComponent implements AfterContentInit {
 
     title: any
-    exprTree: any[]
+    exprTree: NodeInfo[]
 
     readonly treeOptions: ITreeOptions = {
         actionMapping: {
@@ -56,22 +61,24 @@ export class ModalExpressionComponent implements AfterContentInit {
     }
 
 
-    private buildExprTree(): any[] {
+    private buildExprTree(): NodeInfo[] {
         let seq = 0
 
-        const buildNode = (expr: IExpression) => ({
-            id: seq++,
-            name: getName(expr, this.attributes),
-            children: buildChildrenNodes(expr)
-        })
+        function buildNode(expr: IExpression, attributes): NodeInfo {
+            const node = {
+                id: seq++,
+                name: getName(expr, attributes),
+                children: undefined
+            }
+            const children = expr['children'] || (expr['child'] && [expr['child']])
+            if (children) {
+                node.children = children.map(childExpr => buildNode(childExpr, attributes)) as NodeInfo[]
+            }
 
-        // TODO: remove inline function definition.
-        function buildChildrenNodes(ex: IExpression): (any[] | undefined) {
-            const children = ex['children'] || (ex['child'] && [ex['child']])
-            return children && children.map(buildNode)
+            return node
         }
 
-        return [buildNode(this.data.metadata)]
+        return [buildNode(this.data.metadata, this.attributes)]
     }
 
 }

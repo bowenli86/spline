@@ -15,6 +15,7 @@
  */
 import { Component, Input, OnDestroy } from '@angular/core'
 import { Store } from '@ngrx/store'
+import _ from 'lodash'
 import { Subscription } from 'rxjs'
 import { ModalExpressionComponent } from 'src/app/components/modal/modal-expression/modal-expression.component'
 import { AppState } from 'src/app/model/app-state'
@@ -63,10 +64,12 @@ export class PropertiesComponent implements OnDestroy {
                 .subscribe(attributes => {
                     const initialState = {
                         data: expression,
-                        attributes: attributes,
+                        attributes: _.cloneDeep(attributes),
                         type: this.propertyName
                     }
-                    this.store.dispatch(new ModalAction.Open(ModalExpressionComponent, { initialState }))
+                    this.store.dispatch(
+                        new ModalAction.Open(ModalExpressionComponent, { initialState })
+                    )
                 })
         )
     }
