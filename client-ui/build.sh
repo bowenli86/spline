@@ -27,7 +27,7 @@ cd spline-ui-server
 npm install spline-ui@latest
 
 # Install NPM dependencies
-:: npm ci --no-color
+# npm ci --no-color
 
 # Run Spline UI Build
 # npm run ng version
