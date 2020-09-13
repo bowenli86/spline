@@ -84,12 +84,7 @@
             <artifactId>apache-rat-plugin</artifactId>
             <configuration>
               <excludes combine.children="append">
-                <exclude>dist/**</exclude>
-                <exclude>spline-ui/**</exclude>
-                <exclude>node_modules/**</exclude>
-                <exclude>.editorconfig</exclude>
-                <exclude>src/browserslist</exclude>
-                <exclude>src/app/generated/**</exclude>
+                <exclude>spline-ui-serer/**</exclude>
               </excludes>
             </configuration>
           </plugin>
