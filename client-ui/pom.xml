@@ -64,7 +64,7 @@
 
                 <echo message="Build Spline Webjar" />
                 <copy todir="${project.build.outputDirectory}/META-INF/resources/webjars/spline/${project.version}">
-                  <fileset dir="${project.basedir}/spline-ui-server/node_modules/spline-ui" />
+                  <fileset dir="${project.basedir}/spline-ui-server/node_modules/@absa-oss/spline-ui" />
                 </copy>
               </target>
             </configuration>
