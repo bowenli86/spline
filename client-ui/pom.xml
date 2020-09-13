@@ -75,6 +75,27 @@
   </build>
 
   <profiles>
+    <profile>
+      <id>license-check</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.rat</groupId>
+            <artifactId>apache-rat-plugin</artifactId>
+            <configuration>
+              <excludes combine.children="append">
+                <exclude>dist/**</exclude>
+                <exclude>spline-ui-server/**</exclude>
+                <exclude>node_modules/**</exclude>
+                <exclude>.editorconfig</exclude>
+                <exclude>src/browserslist</exclude>
+                <exclude>src/app/generated/**</exclude>
+              </excludes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
 </project>
