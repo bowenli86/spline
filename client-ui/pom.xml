@@ -85,6 +85,11 @@
             <configuration>
               <excludes combine.children="append">
                 <exclude>spline-ui-serer/**</exclude>
+                <exclude>dist/**</exclude>
+                <exclude>node_modules/**</exclude>
+                <exclude>.editorconfig</exclude>
+                <exclude>src/browserslist</exclude>
+                <exclude>src/app/generated/**</exclude>
               </excludes>
             </configuration>
           </plugin>
