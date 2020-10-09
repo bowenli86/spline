@@ -34,9 +34,9 @@
         <artifactId>maven-antrun-plugin</artifactId>
         <dependencies>
           <dependency>
-            <groupId>za.co.absa.spline</groupId>
+            <groupId>za.co.absa.utils</groupId>
             <artifactId>rest-api-doc-generator</artifactId>
-            <version>0.5.0</version>
+            <version>1.0.1</version>
           </dependency>
           <dependency>
             <groupId>za.co.absa.spline</groupId>
@@ -55,7 +55,8 @@
             <configuration>
               <target>
                 <property name="plugin_classpath" refid="maven.plugin.classpath" />
-                <java classpath="${plugin_classpath}" classname="za.co.absa.spline.swagger.SwaggerDocGenCLI">
+                <java classpath="${plugin_classpath}" classname="za.co.absa.rapidgen.RapidGenCLI">
+                  <arg value="swagger" />
                   <arg value="-o" />
                   <arg value="${project.basedir}/src/app/generated/swagger.json" />
                   <arg value="za.co.absa.spline.consumer.rest.ConsumerRESTConfig" />
